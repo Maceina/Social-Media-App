@@ -6,7 +6,7 @@ const resolvers = require('./graphql/resolvers');
 const { MONGODB } = require("./config.js");
 
 const pubsub = new PubSub();
-// c1
+// c12
 const server = new ApolloServer({
   typeDefs,
   resolvers,
