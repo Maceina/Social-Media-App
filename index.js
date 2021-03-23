@@ -5,6 +5,8 @@ const typeDefs = require('./graphql/typeDefs.js');
 const resolvers = require('./graphql/resolvers');
 const { MONGODB } = require("./config.js");
 
+const PORT = process.env.port || 5000;
+
 const pubsub = new PubSub();
 
 const server = new ApolloServer({
@@ -21,8 +23,11 @@ mongoose
   })
   .then(() => {
     console.log("MongoDB connected");
-    return server.listen({ port: 5000 });
+    return server.listen({ port: PORT });
   })
   .then((res) => {
     console.log(`Server is running at ${res.url}`);
+  })
+  .catch(err => {
+    console.log(err);
   });
